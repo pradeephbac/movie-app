@@ -3,8 +3,9 @@ var express = require('express'),
     server = require('http').createServer(app),
     _ = require('lodash'),
     MongoClient = require('mongodb').MongoClient,
-    url = "mongodb://admin:test1234@ds255320.mlab.com:55320/yamovies";
-
+    URL = process.env.PROD_DB_URL || "mongodb://admin:test1234@ds031701.mlab.com:31701/yamovies-dev",
+    DB = "yamovies-dev",
+    MOVIES_COLLECTION = "movies";
 
 var port = process.env.PORT || 8080
 server.listen(port, function () {
@@ -15,9 +16,9 @@ app.use("/node_modules", express.static('node_modules'));
 app.use("/public", express.static('public'));
 
 app.get('/getAllMovies', function (req, res) {
-    MongoClient.connect(url, function (err, client) {
-        var db = client.db('yamovies');
-        db.collection('movies').find({}).toArray()
+    MongoClient.connect(URL, function (err, client) {
+        var db = client.db(DB);
+        db.collection(MOVIES_COLLECTION).find({}).toArray()
             .then((results) => {
                 res.send(results);
             })
@@ -28,9 +29,10 @@ app.get('/getAllMovies', function (req, res) {
 });
 
 app.get('/getMovies', function (req, res) {
-    MongoClient.connect(url, function (err, client) {
-        var db = client.db('yamovies');
-        db.collection('movies').find({"is_main":false}).toArray()
+    MongoClient.connect(URL, function (err, client) {
+        console.log(DB)
+        var db = client.db(DB);
+        db.collection(MOVIES_COLLECTION).find({ "is_main": false }).toArray()
             .then((results) => {
                 res.send(results);
             })
@@ -41,9 +43,9 @@ app.get('/getMovies', function (req, res) {
 });
 
 app.get('/getMainMovies', function (req, res) {
-    MongoClient.connect(url, function (err, client) {
-        var db = client.db('yamovies');
-        db.collection('movies').find({"is_main":true}).toArray()
+    MongoClient.connect(URL, function (err, client) {
+        var db = client.db(DB);
+        db.collection(MOVIES_COLLECTION).find({ "is_main": true }).toArray()
             .then((results) => {
                 res.send(results);
             })
