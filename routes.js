@@ -4,7 +4,7 @@ var express = require('express'),
     _ = require('lodash'),
     MongoClient = require('mongodb').MongoClient,
     URL = process.env.PROD_DB_URL || "mongodb://admin:test1234@ds031701.mlab.com:31701/yamovies-dev",
-    DB = "yamovies-dev",
+    DB = process.env.PROD_DB || "yamovies-dev",
     MOVIES_COLLECTION = "movies";
 
 var port = process.env.PORT || 8080
