@@ -376,8 +376,14 @@ p.fexi_header_para1 a i {
 /*-- //Latest-tv-series --*/
 /*-- footer --*/
 .footer{
-	background:#212121;
-	padding:1em 0;
+	/*background:#212121;
+	padding:1em 0;*/
+	background: #212121;
+    padding: 9px;
+    position: absolute;
+    width: 100%;
+	bottom: 0;
+	display:none;
 }
 .w3ls_footer_grid_left1{
 	position:relative;
