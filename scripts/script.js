@@ -27,7 +27,7 @@ movieApp.config(function ($stateProvider) {
 	$stateProvider.state(singleState);
 });
 // create the controller and inject Angular's $scope
-movieApp.controller('mainController', function ($scope, $state, MyService) {
+movieApp.controller('mainController', function ($scope, $rootScope, $state, MyService) {
 	$scope.loaded = false;
 	$scope.main_movies = [];
 	$scope.sub_movies = [];
@@ -46,14 +46,21 @@ movieApp.controller('mainController', function ($scope, $state, MyService) {
 	$scope.images = $scope.main_movies;
 
 	$scope.showMovie = function (movie) {
+		$rootScope.selectedMovie = movie;
 		$state.go('single', { movie: movie });
 	}
 
 });
 
-movieApp.controller('singleController', function ($scope, $rootScope, $stateParams, $state) {
+movieApp.controller('singleController', function ($scope, $rootScope, $stateParams, $state, $sce) {
 	$scope.message = 'Look! I am an single page.';
-	console.log($state.params.movie)
+	$scope.selectedMovie = $rootScope.selectedMovie;
+	$scope.trustSrc = function (src) {
+		return $sce.trustAsResourceUrl(src);
+	}
+
+	console.log(JSON.stringify($scope.selectedMovie))
+	//console.log($state.params.movie)
 });
 
 movieApp.service('MyService', function ($rootScope, $http, $q) {

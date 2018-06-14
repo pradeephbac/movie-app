@@ -1,4 +1,4 @@
-<div class="general_social_icons">
+<!-- <div class="general_social_icons">
         <nav class="social">
             <ul>
                 <li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
@@ -7,7 +7,7 @@
                 <li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>				  
             </ul>
       </nav>
-    </div>
+    </div> -->
     <!-- single -->
     <div class="single-page-agile-main">
     <div class="container">
@@ -24,15 +24,15 @@
                     <div class="col-sm-8 single-left">
                         <div class="song">
                             <div class="song-info">
-                                <h3>THE LEGEND OF TARZAN - Official Trailer 2  {{movie.title}}</h3>	
+                                <h3>{{selectedMovie.title}}</h3>	
                         </div>
                             <div class="video-grid-single-page-agileits">
-                               <iframe src="https://openload.co/embed/JOtlk6NTNpI/Meditate_Live_with_Headspace__May_23rd.mp4" scrolling="no" frameborder="0" width="700" height="430" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                               <iframe ng-src="{{trustSrc(selectedMovie.video_url)}}" scrolling="no" frameborder="0" width="700" height="430" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                                 <!--div data-video="iuyZ4mISRIU" id="video"> <img src="images/5.jpg" alt="" class="img-responsive" /> </div-->
                             </div>
                         </div>
                         <div class="song-grid-right">
-                            <div class="share">
+                            <!-- <div class="share">
                                 <h5>Share this</h5>
                                 <div class="single-agile-shar-buttons">
                                 <ul>
@@ -56,10 +56,8 @@
                                         <a href="https://twitter.com/intent/tweet?screen_name=w3layouts" class="twitter-mention-button" data-show-count="false">Tweet to @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                                     </li>
                                     <li>
-                                        <!-- Place this tag where you want the +1 button to render. -->
                                         <div class="g-plusone" data-size="medium"></div>
     
-                                        <!-- Place this tag after the last +1 button tag. -->
                                         <script type="text/javascript">
                                           (function() {
                                             var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -70,11 +68,11 @@
                                     </li>
                                 </ul>
                             </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="clearfix"> </div>
     
-                        <div class="all-comments">
+                        <!-- <div class="all-comments">
                             <div class="all-comments-info">
                                 <a href="#">Comments</a>
                                 <div class="agile-info-wthree-box">
@@ -127,7 +125,7 @@
                                 </div>
     
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-4 single-right">
                         <h3>Up Next</h3>
